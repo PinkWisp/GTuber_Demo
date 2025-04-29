@@ -1,0 +1,446 @@
+[gd_scene load_steps=30 format=3 uid="uid://bbu337rf3r8tl"]
+
+[ext_resource type="Script" uid="uid://bamy8qoj516gd" path="res://scripts/robot.gd" id="1_e20l1"]
+[ext_resource type="Texture2D" uid="uid://binmmrqyhylfv" path="res://assets/Godot Mascot/bottom.png" id="1_rcrfe"]
+[ext_resource type="Texture2D" uid="uid://hpa4xq4y5sc8" path="res://assets/Godot Mascot/Top.png" id="2_xwnim"]
+[ext_resource type="Texture2D" uid="uid://dyn50r5om80ng" path="res://assets/Godot Mascot/Eyes Normal.png" id="3_q5kvo"]
+[ext_resource type="Texture2D" uid="uid://dyh4uf64b8ohg" path="res://assets/Godot Mascot/Nose.png" id="4_e20l1"]
+[ext_resource type="Texture2D" uid="uid://bw8ilnqxn7pa5" path="res://assets/Godot Mascot/blink.png" id="5_xwnim"]
+[ext_resource type="Texture2D" uid="uid://csf411rn11i5o" path="res://assets/Godot Mascot/Angry Eyes.png" id="6_q5kvo"]
+[ext_resource type="Texture2D" uid="uid://bq5cfrkdlxi1b" path="res://assets/Godot Mascot/Eyes Sad.png" id="8_ujkns"]
+
+[sub_resource type="Animation" id="Animation_4ru31"]
+resource_name = "Blinking_Angry"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top/Node2D/Eyes:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.23333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_q5kvo"), ExtResource("5_xwnim"), ExtResource("6_q5kvo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.705882, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Top/Node2D/Eyes:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e20l1"]
+resource_name = "Blinking_Default"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top/Node2D/Eyes:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.23333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_q5kvo"), ExtResource("5_xwnim"), ExtResource("3_q5kvo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Top/Node2D/Eyes:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pw6bu"]
+resource_name = "Blinking_Sad"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top/Node2D/Eyes:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.23333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_ujkns"), ExtResource("5_xwnim"), ExtResource("8_ujkns")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Top/Node2D/Eyes:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ujkns"]
+resource_name = "Breathing"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -19.46, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 5)
+}
+
+[sub_resource type="Animation" id="Animation_q5kvo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top/Node2D/Eyes:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_q5kvo")]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bottom:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bottom:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Top/Node2D/Eyes:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xwnim"]
+resource_name = "Talking_Normal"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottom:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.72, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottom:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 53, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.72, 1)
+}
+
+[sub_resource type="Animation" id="Animation_sycts"]
+resource_name = "Talking_Null"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottom:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottom:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_b4ksi"]
+resource_name = "Talking_Whisper"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottom:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.72, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottom:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 20, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.72, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sycts"]
+_data = {
+&"Blinking_Angry": SubResource("Animation_4ru31"),
+&"Blinking_Default": SubResource("Animation_e20l1"),
+&"Blinking_Sad": SubResource("Animation_pw6bu"),
+&"Breathing": SubResource("Animation_ujkns"),
+&"RESET": SubResource("Animation_q5kvo"),
+&"Talking_Normal": SubResource("Animation_xwnim"),
+&"Talking_Null": SubResource("Animation_sycts"),
+&"Talking_Whisper": SubResource("Animation_b4ksi")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ujkns"]
+animation = &"Blinking_Angry"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ru31"]
+animation = &"Blinking_Sad"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6skqc"]
+animation = &"Talking_Normal"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b4ksi"]
+animation = &"Talking_Whisper"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wpobb"]
+animation = &"Talking_Null"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sycts"]
+animation = &"Blinking_Default"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pw6bu"]
+animation = &"Breathing"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_4ru31"]
+input_0/name = "Default"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "Angry"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "Sad"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_wpobb"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_doy2i"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_doy2i"]
+input_0/name = "Talking_Normal"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "Talking_Whisper"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "Talking_Null"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_e4tyb"]
+graph_offset = Vector2(-485.533, 23.9712)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_sycts")
+nodes/Animation/position = Vector2(-520, 360)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_ujkns")
+"nodes/Animation 2/position" = Vector2(-520, 540)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_4ru31")
+"nodes/Animation 3/position" = Vector2(-680, 460)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_6skqc")
+"nodes/Animation 4/position" = Vector2(-260, 620)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_b4ksi")
+"nodes/Animation 5/position" = Vector2(-220, 740)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_wpobb")
+"nodes/Animation 6/position" = Vector2(-40, 760)
+nodes/Breathing/node = SubResource("AnimationNodeAnimation_pw6bu")
+nodes/Breathing/position = Vector2(-320, 160)
+nodes/Eyes/node = SubResource("AnimationNodeTransition_4ru31")
+nodes/Eyes/position = Vector2(-300, 340)
+nodes/Idle/node = SubResource("AnimationNodeAdd2_wpobb")
+nodes/Idle/position = Vector2(-120, 200)
+nodes/Mouth/node = SubResource("AnimationNodeAdd2_doy2i")
+nodes/Mouth/position = Vector2(120, 180)
+nodes/Talking/node = SubResource("AnimationNodeTransition_doy2i")
+nodes/Talking/position = Vector2(-40, 460)
+nodes/output/position = Vector2(320, 140)
+node_connections = [&"Eyes", 0, &"Animation", &"Eyes", 1, &"Animation 2", &"Eyes", 2, &"Animation 3", &"Idle", 0, &"Breathing", &"Idle", 1, &"Eyes", &"Mouth", 0, &"Idle", &"Mouth", 1, &"Talking", &"Talking", 0, &"Animation 4", &"Talking", 1, &"Animation 5", &"Talking", 2, &"Animation 6", &"output", 0, &"Mouth"]
+
+[node name="Robot" type="Node2D"]
+script = ExtResource("1_e20l1")
+
+[node name="Bottom" type="Sprite2D" parent="."]
+texture = ExtResource("1_rcrfe")
+
+[node name="Top" type="Sprite2D" parent="."]
+texture = ExtResource("2_xwnim")
+
+[node name="Node2D" type="Node2D" parent="Top"]
+
+[node name="Eyes" type="Sprite2D" parent="Top/Node2D"]
+texture = ExtResource("3_q5kvo")
+
+[node name="Nose" type="Sprite2D" parent="Top/Node2D"]
+texture = ExtResource("4_e20l1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sycts")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_e4tyb")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Eyes/current_state = "Default"
+parameters/Eyes/transition_request = ""
+parameters/Eyes/current_index = 0
+parameters/Idle/add_amount = 1.0
+parameters/Mouth/add_amount = 0.0
+parameters/Talking/current_state = "Talking_Null"
+parameters/Talking/transition_request = ""
+parameters/Talking/current_index = 2

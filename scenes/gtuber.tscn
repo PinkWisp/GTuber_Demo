@@ -1,0 +1,230 @@
+[gd_scene load_steps=11 format=3 uid="uid://bhrrpnsf3jraj"]
+
+[ext_resource type="Script" uid="uid://bifpd1x4j5l65" path="res://scripts/Gtuber.gd" id="1_seppe"]
+[ext_resource type="PackedScene" uid="uid://bbu337rf3r8tl" path="res://scenes/robot.tscn" id="2_6rd3j"]
+[ext_resource type="PackedScene" uid="uid://bmritncd5cehc" path="res://scenes/tablet_example.tscn" id="3_6rd3j"]
+[ext_resource type="Script" uid="uid://bct3nhclmh87g" path="res://scripts/microphone.gd" id="3_t2rkl"]
+[ext_resource type="Script" uid="uid://bqcxul7bv8blx" path="res://scripts/mic_settings.gd" id="4_l78hm"]
+[ext_resource type="Script" uid="uid://1lx3kfcxspns" path="res://scripts/mic_select_button.gd" id="4_so2ir"]
+[ext_resource type="Script" uid="uid://2fooas7teuj" path="res://scripts/credits_button.gd" id="7_h8i8l"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_eu00o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uol6f"]
+
+[sub_resource type="Theme" id="Theme_5ufb3"]
+HSlider/styles/slider = SubResource("StyleBoxEmpty_uol6f")
+
+[node name="Node" type="Node"]
+script = ExtResource("1_seppe")
+
+[node name="AnchorPoint" type="Node2D" parent="."]
+position = Vector2(432, 398.355)
+scale = Vector2(0.715, 0.715)
+metadata/_edit_group_ = true
+
+[node name="Robot" parent="AnchorPoint" instance=ExtResource("2_6rd3j")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_lock_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(900, 648)
+render_target_update_mode = 4
+
+[node name="TabletExample" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_6rd3j")]
+
+[node name="MenuPanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 53.0
+grow_horizontal = 2
+metadata/_edit_group_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MenuPanelContainer"]
+stream = SubResource("AudioStreamMicrophone_eu00o")
+autoplay = true
+bus = &"Mic"
+script = ExtResource("3_t2rkl")
+
+[node name="BufferTimer" type="Timer" parent="MenuPanelContainer/AudioStreamPlayer"]
+wait_time = 2.0
+one_shot = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuPanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 10
+
+[node name="SplitContainer" type="SplitContainer" parent="MenuPanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MicSettings" type="BoxContainer" parent="MenuPanelContainer/MarginContainer/SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical = true
+script = ExtResource("4_l78hm")
+
+[node name="ProgressBar" type="ProgressBar" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/ProgressBar"]
+
+[node name="WSlider" type="HSlider" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_5ufb3")
+min_value = -60.0
+max_value = 0.0
+step = 0.01
+
+[node name="NSlider" type="HSlider" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_5ufb3")
+min_value = -60.0
+max_value = 0.0
+step = 0.01
+
+[node name="LSlider" type="HSlider" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_5ufb3")
+min_value = -60.0
+max_value = 0.0
+step = 0.01
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 5
+
+[node name="InputSlider" type="HSlider" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+min_value = -60.0
+max_value = 0.0
+step = 0.01
+
+[node name="SliderTimer" type="Timer" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings"]
+unique_name_in_owner = true
+wait_time = 0.8
+one_shot = true
+
+[node name="BoxContainer2" type="BoxContainer" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings"]
+layout_mode = 2
+
+[node name="MicLabel" type="Label" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mic:"
+
+[node name="MicSelectButton" type="OptionButton" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text_overrun_behavior = 2
+script = ExtResource("4_so2ir")
+
+[node name="WButton" type="Button" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "W"
+
+[node name="NButton" type="Button" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "N"
+
+[node name="LButton" type="Button" parent="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "L"
+
+[node name="SettingsContainer" type="BoxContainer" parent="MenuPanelContainer/MarginContainer/SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TablerCaliButton" type="Button" parent="MenuPanelContainer/MarginContainer/SplitContainer/SettingsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Calibrate Tablet"
+
+[node name="TabletButton" type="Button" parent="MenuPanelContainer/MarginContainer/SplitContainer/SettingsContainer"]
+layout_mode = 2
+text = "Tablet"
+
+[node name="CreditsButton" type="Button" parent="MenuPanelContainer/MarginContainer/SplitContainer/SettingsContainer"]
+layout_mode = 2
+tooltip_text = "https://ko-fi.com/pinkwisp"
+text = "👻"
+script = ExtResource("7_h8i8l")
+
+[node name="DebugLabel" type="Label" parent="MenuPanelContainer/MarginContainer/SplitContainer/SettingsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "GTuber Demo by PinkWisp"
+vertical_alignment = 1
+
+[connection signal="mic_loud" from="MenuPanelContainer/AudioStreamPlayer" to="AnchorPoint/Robot" method="_on_audio_stream_player_mic_loud"]
+[connection signal="mic_normal" from="MenuPanelContainer/AudioStreamPlayer" to="AnchorPoint/Robot" method="_on_audio_stream_player_mic_normal"]
+[connection signal="mic_null" from="MenuPanelContainer/AudioStreamPlayer" to="AnchorPoint/Robot" method="_on_audio_stream_player_mic_null"]
+[connection signal="mic_quiet" from="MenuPanelContainer/AudioStreamPlayer" to="AnchorPoint/Robot" method="_on_audio_stream_player_mic_quiet"]
+[connection signal="timeout" from="MenuPanelContainer/AudioStreamPlayer/BufferTimer" to="MenuPanelContainer/AudioStreamPlayer" method="_on_buffer_timer_timeout"]
+[connection signal="drag_ended" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/InputSlider" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_input_slider_drag_ended"]
+[connection signal="value_changed" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/InputSlider" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_input_slider_value_changed"]
+[connection signal="timeout" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/SliderTimer" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_slider_timer_timeout"]
+[connection signal="item_selected" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2/MicSelectButton" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2/MicSelectButton" method="_on_item_selected"]
+[connection signal="mouse_entered" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2/WButton" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_w_button_mouse_entered"]
+[connection signal="mouse_exited" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2/WButton" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_w_button_mouse_exited"]
+[connection signal="pressed" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2/WButton" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_w_button_pressed"]
+[connection signal="mouse_entered" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2/NButton" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_n_button_mouse_entered"]
+[connection signal="mouse_exited" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2/NButton" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_n_button_mouse_exited"]
+[connection signal="pressed" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2/NButton" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_n_button_pressed"]
+[connection signal="mouse_entered" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2/LButton" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_l_button_mouse_entered"]
+[connection signal="mouse_exited" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2/LButton" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_l_button_mouse_exited"]
+[connection signal="pressed" from="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings/BoxContainer2/LButton" to="MenuPanelContainer/MarginContainer/SplitContainer/MicSettings" method="_on_l_button_pressed"]
+[connection signal="button_down" from="MenuPanelContainer/MarginContainer/SplitContainer/SettingsContainer/TablerCaliButton" to="SubViewportContainer/SubViewport/TabletExample" method="_on_tabler_cali_button_button_down"]
+[connection signal="pressed" from="MenuPanelContainer/MarginContainer/SplitContainer/SettingsContainer/TabletButton" to="SubViewportContainer/SubViewport/TabletExample" method="_on_tablet_button_pressed"]
+[connection signal="pressed" from="MenuPanelContainer/MarginContainer/SplitContainer/SettingsContainer/CreditsButton" to="MenuPanelContainer/MarginContainer/SplitContainer/SettingsContainer/CreditsButton" method="_on_pressed"]
